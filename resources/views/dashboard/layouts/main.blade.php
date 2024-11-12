@@ -7,7 +7,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
     
-    <title>lelemon | {{ $title }}</title>
+    <title>shiro | {{ $title }}</title>
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script>
 
@@ -72,6 +72,8 @@
         @include('dashboard.layouts.header')
 
         @yield('container')
+
+        @yield('content')
 
         @include('dashboard.layouts.footer')
       </div>

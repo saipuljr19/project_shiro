@@ -72,9 +72,9 @@
                                     <td>{{ $control->temperature }} °C</td>
                                     <td>{{ $control->turbidity }} NTU</td>
                                     <td>{{ $control->ph }}</td>
-                                    <td>{{ $control->jarak }} CM</td>
+                                    {{-- <td>{{ $control->jarak }} CM</td>
                                     <td>{{ $control->pompa_masuk }}</td>
-                                    <td>{{ $control->pompa_keluar }}</td>
+                                    <td>{{ $control->pompa_keluar }}</td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

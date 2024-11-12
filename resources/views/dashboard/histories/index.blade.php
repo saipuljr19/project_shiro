@@ -34,11 +34,8 @@
                         <th scope="col">Tanggal</th>
                         <th scope="col">Pukul</th>
                         <th scope="col">Suhu Air</th>
-                        <th scope="col">Keruh Air</th>
-                        <th scope="col">Keruh Air</th>
-                        <th scope="col">Jarak Air</th>
-                        <th scope="col">Pompa In</th>
-                        <th scope="col">Pompa Out</th>
+                        <th scope="col">TDS</th>
+                        <th scope="col">pH Air</th>
                         <th scope="col">Action</th>
                         
                     </tr>
@@ -60,9 +57,9 @@
                         <td>{{ $control->temperature }} °C</td>
                         <td>{{ $control->turbidity }} NTU</td>
                         <td>{{ $control->ph }}</td>
-                        <td>{{ $control->jarak }} CM</td>
+                        {{-- <td>{{ $control->jarak }} CM</td>
                         <td>{{ $control->pompa_masuk }}</td>
-                        <td>{{ $control->pompa_keluar }}</td>
+                        <td>{{ $control->pompa_keluar }}</td> --}}
                         <td>
                         <form action="/dashboard/controls/{{ $control->id }}" method="post">
                             @csrf
