@@ -8,9 +8,6 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    {{-- manifest PWA --}}
-    {{-- <link rel="manifest" href="{{ asset('manifest.json') }}" /> --}}
-
     <!-- Favicon -->
     <link href="{{ asset('landpage/assets/img/favicons/logo2.png') }}" rel="icon">
 
@@ -18,104 +15,127 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('dashmin/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashmin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+    <!-- Bootstrap & Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('dashmin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        .bg-image-vertical {
+            background-color: #f8f9fa;
+        }
 
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('dashmin/css/style.css') }}" rel="stylesheet">
+        .login-image {
+            background-image: url('{{ asset('images/gbrkoi.png') }}');
+            background-size: cover;
+            background-position: left;
+            object-fit: cover;
+            object-position: left;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            border-radius: 30px;
+        }
+
+        .form-container {
+            margin-top: 50px;
+        }
+
+        .btn-gradien {
+            background: linear-gradient(45deg, #B8001F, #52000E);
+            color: white;
+            border: none;
+        }
+
+        .btn-gradien:hover {
+            background: linear-gradient(45deg, #52000E, #B8001F);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+    <section class="vh-100 bg-image-vertical">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <!-- Bagian Gambar -->
+                <div class="col-sm-6 d-none d-sm-block px-0">
+                    <img src="{{ asset('assets/images/gbrkoi.png') }}" alt="Login image" class="w-100 vh-100 login-image">
+                </div>
 
+                <!-- Bagian Form Login -->
+                <div class="col-sm-6 text-black d-flex justify-content-center align-items-center">
+                    <div class="form-container">
+                        <!-- Logo dan Judul -->
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="{{ asset('assets/images/shiroo.png') }}" alt="Logo" class="logo">
+                            <h1 class="ms-3">Shiro</h1>
+                        </div>
 
-        <!-- Sign In Start -->
-        <div class="container-fluid">
-            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                        <!-- Alerts -->
                         @if (session()->has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
+                            <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                        @endif
+                        @if (session()->has('loginError'))
+                            <div class="alert alert-danger" role="alert">{{ session('loginError') }}</div>
                         @endif
 
-                        @if (session()->has('loginError'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('loginError') }}
+                        <!-- Form Login -->
+                        <form action="/login" method="post" style="width: 23rem;">
+                            @csrf
+                            <div class="form-outline mb-4">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" id="username"
+                                    class="form-control form-control-lg @error('username') is-invalid @enderror"
+                                    value="{{ old('username') }}" autofocus required>
+                                @error('username')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                        @endif
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-warning"><i class="fa fa-hashtag me-2"></i>SHIRO</h3>
-                            </a>
-                            <h3>Login</h3>
-                        </div>
-                        <form class="mb-3" action="/login" method="post">
-                        @csrf
-                        <div class="form-floating mb-3">
-                            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Enter your username" autofocus required value="{{ old('username') }}">
-                            <label for="username">Username</label>
-                            @error('username')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+
+                            <div class="form-outline mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password"
+                                        class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                        required>
+                                    <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                                        <i class="fas fa-eye" id="eyeIcon"></i>
+                                    </span>
+                                </div>
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                            @enderror
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter your password" aria-describedby="password" required>
-                            <label for="password">Password</label>
-                            @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-warning py-3 w-100 mb-4">Login</button>
+
+                            <button type="submit" class="btn btn-gradien btn-lg w-100 mb-4">Login</button>
                         </form>
+
+                        {{-- <p>Belum punya akun? <a href="{{ route('register') }}" class="link-info">Register</a></p> --}}
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Sign In End -->
-    </div>
+    </section>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('dashmin/lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('dashmin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{ asset('dashmin/js/main.js') }}"></script>
-
-    {{-- Service-worker PWA --}}
-    {{-- <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register("{{ asset('serviceworker.js') }}");
-      }
-    </script> --}}
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    </script>
 </body>
 
 </html>

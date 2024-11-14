@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardHistoryController;
+use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\KoiDetectionController;
 
 /*
@@ -40,6 +41,8 @@ Route::get('/bacapompamasuk', [MonitoringController::class, 'bacapompamasuk'])->
 Route::get('/bacapompakeluar', [MonitoringController::class, 'bacapompakeluar'])->middleware('auth');
 Route::get('/detect-koi', [KoiDetectionController::class, 'showForm'])->name('detect-koi');
 Route::post('/detect-koi', [KoiDetectionController::class, 'detect'])->name('detect-koi.submit');
+Route::get('/grafik', [GrafikController::class, 'index'])->middleware('auth')->name('grafik');
+
 
 // Route untuk menyimpan nilai sensor ke database
 Route::get('/simpan/{temperature}/{turbidity}/{ph}/{jarak}/{pompa_masuk}/{pompa_keluar}', [MonitoringController::class, 'simpan']);

@@ -27,10 +27,6 @@ class KoiDetectionController extends Controller
             // Menyimpan gambar
             $path = $request->file('fish_image')->store('koi_images', 'public');
 
-            // Misalnya, jika Anda menggunakan machine learning, Anda dapat memproses gambar di sini.
-            // Contoh proses deteksi (sesuaikan dengan logika deteksi jenis ikan koi Anda)
-            // $result = $this->detectKoiType($path);
-
             // Simpan hasil deteksi ke database jika diperlukan
             $detection = new KoiDetection();
             $detection->image_path = $path;
