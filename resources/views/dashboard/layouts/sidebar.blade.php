@@ -35,21 +35,21 @@
         </div>
         <div class="navbar-nav w-100">
             <a href="/dashboard" class="nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
-                <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                <i class="fa fa-tachometer-alt me-2"style="background-color: #384B70; color: white;"></i>Dashboard
             </a>
             <a href="/dashboard/controls"
                 class="nav-item nav-link {{ Request::is('dashboard/controls') ? 'active' : '' }}">
-                <i class="fa fa-table me-2"></i>Rekap Data
+                <i class="fa fa-table me-2" style="background-color: #384B70; color: white;"></i>Rekap Data
             </a>
             <a href="{{ route('detect-koi') }}"
                 class="nav-item nav-link {{ Request::is('detect-koi') ? 'active' : '' }}">
-                <i class="fa fa-fish me-2"></i>Jenis Ikan KOI
+                <i class="fa fa-fish me-2" style="background-color: #384B70; color: white;"></i>Jenis Ikan KOI
             </a>
             <a href="{{ route('grafik') }}" class="nav-item nav-link {{ Request::is('grafik') ? 'active' : '' }}">
-                <i class="fa fa-chart-line me-2"></i>Grafik
+                <i class="fa fa-chart-line me-2" style="background-color: #384B70; color: white;"></i>Grafik
             </a>
             <a href="/logout" class="nav-item nav-link">
-                <i class='bx bx-log-out me-2'></i>Logout
+                <i class='bx bx-log-out me-2' style="background-color: #384B70; color: white;"></i>Logout
             </a>
         </div>
     </nav>
