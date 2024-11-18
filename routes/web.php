@@ -20,29 +20,30 @@ use App\Http\Controllers\KoiDetectionController;
 |
 */
 
+// Halaman utama
 Route::get('/', [HomeController::class, 'index']);
 
+// Rute login dan logout
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
     Route::get('/logout', 'logout');
 });
 
+// Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::resource('/dashboard/controls', DashboardHistoryController::class)->middleware('auth');
 Route::get('/dashboard/cetak', [DashboardHistoryController::class, 'cetak'])->middleware('auth');
 
-Route::get('/bacasuhu', [MonitoringController::class, 'bacasuhu'])->middleware('auth');
-Route::get('/bacakekeruhan', [MonitoringController::class, 'bacakekeruhan'])->middleware('auth');
-Route::get('/bacatds', [MonitoringController::class, 'bacatds'])->middleware('auth');
-Route::get('/bacaph', [MonitoringController::class, 'bacaph'])->middleware('auth');
-Route::get('/bacajarak', [MonitoringController::class, 'bacajarak'])->middleware('auth');
-Route::get('/bacapompamasuk', [MonitoringController::class, 'bacapompamasuk'])->middleware('auth');
-Route::get('/bacapompakeluar', [MonitoringController::class, 'bacapompakeluar'])->middleware('auth');
+// Monitoring data (Revisi: Semua dihandle satu fungsi untuk efisiensi)
+Route::get('/monitoring', [MonitoringController::class, 'showDashboard'])->middleware('auth');
+
+// Simpan data sensor (Gunakan POST untuk keamanan)
+Route::post('/monitoring/simpan', [MonitoringController::class, 'simpan'])->middleware('auth');
+
+// Deteksi ikan Koi
 Route::get('/detect-koi', [KoiDetectionController::class, 'showForm'])->name('detect-koi');
 Route::post('/detect-koi', [KoiDetectionController::class, 'detect'])->name('detect-koi.submit');
+
+// Grafik data
 Route::get('/grafik', [GrafikController::class, 'index'])->middleware('auth')->name('grafik');
-
-
-// Route untuk menyimpan nilai sensor ke database
-Route::get('/simpan/{temperature}/{turbidity}/{ph}/{jarak}/{pompa_masuk}/{pompa_keluar}', [MonitoringController::class, 'simpan']);

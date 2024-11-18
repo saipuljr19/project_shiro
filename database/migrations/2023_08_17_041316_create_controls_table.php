@@ -12,14 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('controls', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('temperature', 10, 2);
-            $table->decimal('turbidity', 10, 2);
-            $table->decimal('ph', 10, 2);
-            $table->decimal('jarak', 10, 2);
-            $table->string('pompa_masuk');
-            $table->string('pompa_keluar');
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->decimal('temperature', 10, 2); // Suhu air
+            $table->decimal('turbidity', 10, 2); // Kekeruhan air (TDS)
+            $table->decimal('ph', 10, 2); // pH air
+            $table->timestamps(); // Waktu pencatatan data
         });
     }
 

@@ -9,5 +9,13 @@ class Control extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'controls';
+    protected $primaryKey = 'id';
+
+    // Kolom yang bisa diisi
+    protected $fillable = [
+        'temperature',
+        'turbidity',
+        'ph',
+    ];
 }

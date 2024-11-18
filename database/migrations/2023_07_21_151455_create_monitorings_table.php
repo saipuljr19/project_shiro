@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('monitorings', function (Blueprint $table) {
             $table->id();
-            $table->boolean('notification')->default(false);
-            $table->decimal('temperature', 10, 2);
-            $table->decimal('turbidity', 10, 2);
-            $table->decimal('ph', 10, 2);
-            $table->decimal('jarak', 10, 2);
-            $table->string('pompa_masuk');
-            $table->string('pompa_keluar');
-            $table->timestamps();
+            $table->boolean('notification')->default(false); // Menyimpan status notifikasi
+            $table->decimal('temperature', 10, 2); // Suhu air
+            $table->decimal('turbidity', 10, 2); // TDS/Kekeruhan air
+            $table->decimal('ph', 10, 2); // pH air
+            $table->timestamps(); // Tanggal dan waktu pencatatan
         });
     }
 
