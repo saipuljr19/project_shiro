@@ -2,11 +2,11 @@
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="/dashboard" class="navbar-brand d-flex d-lg-none me-4">
         <!-- Mengganti text-warning menjadi warna #B8001F -->
-        <h2 style="color: #B8001F;" class="mb-0"><i class="fa fa-hashtag"></i></h2>
+        <h2 style="color: #384B70;" class="mb-0"><i class="fa fa-hashtag"></i></h2>
     </a>
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <!-- Mengganti ikon hamburger bar warna orange -->
-        <i class="fa fa-bars" style="color: #B8001F;"></i>
+        <i class="fa fa-bars" style="color: #384B70;"></i>
     </a>
     <div class="navbar-nav align-items-center ms-auto">
         <div class="nav-item dropdown">

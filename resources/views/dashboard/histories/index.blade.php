@@ -15,7 +15,7 @@
             <form action="/dashboard/controls" method="get">
                 <div class="input-group mb-3">
                     <input type="date" class="form-control" name="filter" value="{{ request('filter') ?: $today }}">
-                    <button class="btn btn-warning" type="submit"><i class="bx bx-search"></i> Filter</button>
+                    <button class="btn btn-danger" type="submit"><i class="bx bx-search"></i> Filter</button>
                 </div>
             </form>
             <a class="btn btn-secondary mb-3" target="_blank"

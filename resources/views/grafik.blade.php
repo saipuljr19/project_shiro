@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="submit" class="form-label">&nbsp;</label>
-                        <button type="submit" class="btn btn-primary w-100">Tampilkan Grafik</button>
+                        <button type="submit" class="btn w-100" style="background-color: #384B70; color: white; border: none;">Tampilkan Grafik</button>
                     </div>
                 </div>
             </form>

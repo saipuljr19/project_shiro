@@ -1,8 +1,24 @@
-<!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
+    <style>
+        .sidebar .navbar .navbar-nav .nav-link:hover,
+        .sidebar .navbar .navbar-nav .nav-link.active {
+            color: var(--primary);
+            /* Warna teks merah */
+            background: #ffffff;
+            /* Latar belakang putih */
+            border-color: var(--primary);
+            /* Border warna merah */
+        }
+
+        /* Definisikan variabel primary sebagai warna merah */
+        :root {
+            --primary: #B8001F;
+            /* Warna merah */
+        }
+    </style>
     <nav class="navbar bg-light navbar-light">
         <a href="\dashboard" class="navbar-brand mx-4 mb-3">
-            <h3 style="color: #B8001F;"><i class="fa fa-hashtag me-2"></i>Shiroo</h3>
+            <h3 style="color: #384B70;"><i class="fa fa-hashtag me-2"></i>Shiroo</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -19,23 +35,22 @@
         </div>
         <div class="navbar-nav w-100">
             <a href="/dashboard" class="nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
-                <i class="fa fa-tachometer-alt me-2" style="background-color: #B8001F; color: white;"></i>Dashboard
+                <i class="fa fa-tachometer-alt me-2"></i>Dashboard
             </a>
             <a href="/dashboard/controls"
                 class="nav-item nav-link {{ Request::is('dashboard/controls') ? 'active' : '' }}">
-                <i class="fa fa-table me-2" style="background-color: #B8001F; color: white;"></i>Rekap Data
+                <i class="fa fa-table me-2"></i>Rekap Data
             </a>
             <a href="{{ route('detect-koi') }}"
                 class="nav-item nav-link {{ Request::is('detect-koi') ? 'active' : '' }}">
-                <i class="fa fa-fish me-2" style="background-color: #B8001F; color: white;"></i>Jenis Ikan KOI
+                <i class="fa fa-fish me-2"></i>Jenis Ikan KOI
             </a>
             <a href="{{ route('grafik') }}" class="nav-item nav-link {{ Request::is('grafik') ? 'active' : '' }}">
-                <i class="fa fa-chart-line me-2" style="background-color: #B8001F; color: white;"></i>Grafik
+                <i class="fa fa-chart-line me-2"></i>Grafik
             </a>
             <a href="/logout" class="nav-item nav-link">
-                <i class='bx bx-log-out me-2' style="background-color: #B8001F; color: white;"></i>Logout
+                <i class='bx bx-log-out me-2'></i>Logout
             </a>
         </div>
     </nav>
 </div>
-<!-- Sidebar End -->

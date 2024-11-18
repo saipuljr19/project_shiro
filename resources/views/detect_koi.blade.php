@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <style>
             .custom-red-bg {
-                background-color: #B8001F !important;
+                background-color: #384B70 !important;
                 color: white !important;
             }
 

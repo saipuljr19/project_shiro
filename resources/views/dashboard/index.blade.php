@@ -3,11 +3,11 @@
 @section('container')
     <style>
         .text-custom-red {
-            color: #B8001F;
+            color: #000;
         }
 
         .icon-custom-red {
-            color: #B8001F;
+            color: #384B70;
         }
     </style>
 
